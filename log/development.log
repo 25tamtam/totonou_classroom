@@ -1,0 +1,19 @@
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: 5ba3a537a3eb4697b95a1d775bc8ed5d.vfs.cloud9.ap-northeast-1.amazonaws.com
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE DATABASE `totonou_classroom_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE DATABASE `totonou_classroom_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+Started GET "/" for 180.31.221.7 at 2024-04-06 15:49:52 +0900
+Cannot render console from 180.31.221.7! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ec2-user/.rvm/gems/ruby-2.7.5/gems/railties-6.1.7.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ec2-user/.rvm/gems/ruby-2.7.5/gems/railties-6.1.7.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 23.8ms | Allocations: 336)
+Completed 200 OK in 64ms (Views: 37.4ms | ActiveRecord: 0.0ms | Allocations: 2890)
+
+
+Started GET "/" for 180.31.221.7 at 2024-04-06 15:57:26 +0900
+Cannot render console from 180.31.221.7! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ec2-user/.rvm/gems/ruby-2.7.5/gems/railties-6.1.7.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ec2-user/.rvm/gems/ruby-2.7.5/gems/railties-6.1.7.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.4ms | Allocations: 336)
+Completed 200 OK in 25ms (Views: 11.3ms | ActiveRecord: 0.0ms | Allocations: 2484)
+
+
