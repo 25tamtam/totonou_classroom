@@ -1700,3 +1700,16 @@ Processing by TotonousController#index as HTML
 Completed 200 OK in 23ms (Views: 20.5ms | Allocations: 6032)
 
 
+Started GET "/" for 180.31.221.7 at 2024-04-13 17:41:33 +0900
+Cannot render console from 180.31.221.7! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TotonousController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering totonous/index.html.erb within layouts/application
+  Rendered totonous/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 36)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 1.6ms | Allocations: 769)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 37)
+  Rendered layout layouts/application.html.erb (Duration: 11.8ms | Allocations: 4096)
+Completed 200 OK in 15ms (Views: 14.7ms | Allocations: 4470)
+
+
