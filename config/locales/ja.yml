@@ -1,0 +1,44 @@
+ja:
+  errors:
+    format: "%{attribute}%{message}"
+
+  activerecord:
+    attributes:
+      memo:
+        title: "タイトル"
+        content: "内容"
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+    errors:
+      models:
+        memo:
+          attributes:
+            title:
+              blank: "を入力してください。"
+              too_long: "は30文字以内で入力してください。"
+            content:
+              blank: "を入力してください。"
+        user:
+          attributes:
+            email:
+              blank: "を入力してください。"
+            password:
+              blank: "を入力してください。"
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+              confirmation: "が内容とあっていません。"
+            password_confirmation:
+              blank: "を入力してください。"
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+              confirmation: "がパスワードと一致しません。"
+            current_password:
+              blank: "を入力してください。"
