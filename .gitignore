@@ -34,3 +34,4 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+public/phpMyAdmin-5.1.1-all-languages/
