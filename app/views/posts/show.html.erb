@@ -1,0 +1,39 @@
+<div class="container">
+  <h2 class="text-center mb-4"><%= @post.title %></h2>
+
+  <div class="card">
+    <% if @post.image1.present? %>
+      <%= image_tag url_for(@post.image1), class: "card-img-top", style: "max-height: 300px; object-fit: cover;" %>
+    <% elsif @post.image2.present? %>
+      <%= image_tag url_for(@post.image2), class: "card-img-top", style: "max-height: 300px; object-fit: cover;" %>
+    <% else %>
+      <div class="no-image-placeholder card-img-top" style="height: 300px; background-color: #f0f0f0; display: flex; justify-content: center; align-items: center;">
+        画像が添付されていません
+      </div>
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title">症状のある箇所: <%= @post.title %></h5>
+      <p class="card-text">ご年齢: <%= @post.age %></p>
+      <p class="card-text">症状やお体の気になるところ: <%= @post.detail %></p>
+    </div>
+    <div class="card-footer">
+      <div class="operation">
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item"><%= link_to "編集", edit_post_path(@post), class: "btn btn-secondary" %></li>
+          <li class="list-inline-item"><%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: "btn btn-magenta" %></li>
+      </div>
+    </div>
+  </div>
+
+  <!-- コメントセクション -->
+  <div class="mt-4">
+    <h3>整体師のアドバイス</h3>
+    <% @post.post_comments.each do |comment| %>
+      <div class="card mt-2">
+        <div class="card-body">
+          <p><%= comment.body %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
