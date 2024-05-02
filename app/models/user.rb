@@ -11,6 +11,4 @@ class User < ApplicationRecord
   def admin?
     is_admin
   end
-  mount_uploader :image1, ImageUploader
-  mount_uploader :image2, ImageUploader
 end

@@ -21,9 +21,15 @@
   <div class="dropdown-menu dropdown-menu-end shadow text-center" style="padding: 4px 0px;">
     <%= link_to "アカウント編集", edit_user_registration_path, class: "dropdown-item text-secondary border-bottom py-2", data: { turbolinks: false } %>
     <%= link_to "ログアウト", destroy_user_session_path, class: "dropdown-item text-secondary py-2", method: :delete %>
-
   </div>
   </div> 
+  
+   <!-- 管理者のみのリンク -->
+  <% if current_user && current_user.admin? %>
+  <%= link_to "ユーザーの投稿一覧", admin_post_comments_path, class: "btn btn-magenta me-3", data: { turbolinks: false } %>
+　<% end %>
+  
+  
  
   <% else %>
     <%= link_to "ログイン", new_user_session_path, class: "btn .text-gray me-3", data: { turbolinks: false } %>
