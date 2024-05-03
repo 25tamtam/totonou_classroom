@@ -1,19 +1,23 @@
 Rails.application.routes.draw do
   root "totonous#index"
   devise_for :users
+  
   resources :totonous
   resources :posts do
-    resources :post_comments, only: [:create, :destroy, :show]
+    resources :post_comments, only: [:create, :destroy, :show, :edit, :update] # editとupdateを追加
   end
   
   resources :users do
-  resources :posts, only: [:index, :destroy]
+    resources :posts, only: [:index, :destroy]
   end
   
-  
-  # 管理者用のルートを追加
   namespace :admin do
-    resources :post_comments, only: [:new, :create]
+    resources :posts, only: [:index] do
+    resources :post_comments, only: [:create, :destroy, :show, :edit, :update] # :editと:updateを追加
   end
-
+  end
+  
+  patch '/admin/posts/:post_id/post_comments/:id/edit', to: 'post_comments#update', as: :update_post_comment
 end
+  
+

@@ -51,7 +51,6 @@ class PostsController < ApplicationController
   # 投稿を削除するアクション
   def destroy
     @post = current_user.posts.find(params[:id])
-    # binding.pry
     @post.destroy
     redirect_to root_path, notice: '投稿が正常に削除されました。'
   end

@@ -23,8 +23,7 @@
       <div class="operation">
         <ul class="list-inline mb-0">
           <li class="list-inline-item"><%= link_to "編集", edit_post_path(@post), class: "btn btn-secondary" %></li>
-          <li class="list-inline-item"><%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "削除してもよろしいですか？" } %></li>
-           <!--<li class="list-inline-item"><%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: "btn btn-magenta" %></li>  -->
+          <li class="list-inline-item"><%= button_to "削除", post_path(@post), method: :delete, class: "btn btn-magenta" %></li>
       </div>
     </div>
   </div>
@@ -40,4 +39,11 @@
       </div>
     <% end %>
   </div>
-</div>
+  
+  <!-- 管理者の投稿フォーム -->
+<% if current_user.admin? %>
+  <div class="mt-4 mb-4">
+    <h3>整体師のアドバイスを追加</h3>
+    <%= render partial: 'shared/comment_form', locals: { commentable: @post } %>
+  </div>
+<% end %>

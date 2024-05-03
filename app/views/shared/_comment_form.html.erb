@@ -1,0 +1,7 @@
+<%= form_with(model: [commentable, PostComment.new], url: post_post_comments_path(commentable), method: :post, local: true) do |form| %>
+  <div class="form-group">
+    <%= form.text_area :body, class: "form-control" %>
+  </div>
+  <%= form.submit "アドバイスを投稿", class: "btn btn-magenta" %>
+<% end %>
+
