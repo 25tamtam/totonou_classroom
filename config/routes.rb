@@ -1,6 +1,23 @@
 Rails.application.routes.draw do
   root "totonous#index"
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
   resources :totonous
+  resources :posts do
+    resources :post_comments, only: [:create, :destroy, :show, :edit, :update] # editとupdateを追加
+  end
+  
+  resources :users do
+    resources :posts, only: [:index, :destroy]
+  end
+  
+  namespace :admin do
+    resources :posts, only: [:index] do
+    resources :post_comments, only: [:create, :destroy, :show, :edit, :update] # :editと:updateを追加
+  end
+  end
+  
+  patch '/admin/posts/:post_id/post_comments/:id/edit', to: 'post_comments#update', as: :update_post_comment
 end
+  
+

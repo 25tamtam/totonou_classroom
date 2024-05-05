@@ -1,0 +1,9 @@
+<div class="text-center">
+  <%= form_with(model: [@post, @post.post_comments.build], url: post_post_comments_path(@post)) do |form| %>
+    <%= form.label :body, "整体師のアドバイス", class: "text-secondary fw-bold mb-2" %>
+    <%= form.text_area :body, class: "form-control shadow-sm py-md-3", rows: 5 %>
+    <div class="text-center">
+      <%= form.submit "投稿する", class: "btn btn-magenta shadow-sm fw-bold mt-4 px-5 py-3" %>
+    </div>
+  <% end %>
+</div>

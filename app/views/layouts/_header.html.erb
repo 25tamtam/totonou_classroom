@@ -9,16 +9,26 @@
   <div class="d-flex justify-content-end align-items-center">
       
  <% if user_signed_in? %>
-  <p class="text-secondary d-md-block d-none fs-6 pe-2 mt-3"><%= current_user.username %></p>
+　<%= link_to "症状投稿一覧", user_posts_path(current_user), class: "btn btn-magenta me-3 px-md-3 py-md-2", data: { turbolinks: false } %>
+ <%= link_to new_post_path, class: "btn btn-magenta me-5 px-md-3 py-md-2", data: { turbolinks: false } do %>
+ <i class="bi bi-chat-left-text me-1"></i>
+  症状相談投稿
+  <% end %>
+  <p class="text-secondary d-md-block d-none fs-6 pe-2 "><%= current_user.username %></p>
  
   <div class="dropdown">
     <a class="dropdown-toggle .text-gray" data-bs-toggle="dropdown" href="#"></a>
   <div class="dropdown-menu dropdown-menu-end shadow text-center" style="padding: 4px 0px;">
     <%= link_to "アカウント編集", edit_user_registration_path, class: "dropdown-item text-secondary border-bottom py-2", data: { turbolinks: false } %>
     <%= link_to "ログアウト", destroy_user_session_path, class: "dropdown-item text-secondary py-2", method: :delete %>
-
   </div>
   </div> 
+  
+   <!-- 管理者のみのリンク -->
+  <% if current_user && current_user.admin? %>
+    <%= link_to "全ユーザーの投稿一覧", admin_posts_path, class: "btn btn-magenta me-3", data: { turbolinks: false } %>
+  <% end %>
+  
  
   <% else %>
     <%= link_to "ログイン", new_user_session_path, class: "btn .text-gray me-3", data: { turbolinks: false } %>

@@ -1,0 +1,41 @@
+<div class="container">
+  <h2 class="text-center mt-4 mb-4">投稿詳細</h2>
+
+  <!-- 投稿内容の表示 -->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <!-- 投稿の画像表示など -->
+        <div class="card-body">
+          <h5 class="card-title">症状のある箇所: <%= @post.title %></h5>
+          <p class="card-text">ご年齢: <%= @post.age %></p>
+          <p class="card-text">症状やお体の気になるところ: <%= @post.detail %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- コメントフォーム -->
+  <div class="mt-5">
+    <h3>コメントを追加</h3>
+    <%= form_with(model: [@post, @new_comment], url: admin_post_comments_path(@post), method: :post) do |form| %>
+      <div class="form-group">
+        <%= form.label :content, "コメント内容" %>
+        <%= form.text_area :content, class: "form-control" %>
+      </div>
+      <%= form.submit "コメントを追加", class: "btn btn-magenta" %>
+    <% end %>
+  </div>
+
+  <!-- コメント一覧 -->
+  <div class="mt-5">
+    <h3>コメント一覧</h3>
+    <% @comments.each do |comment| %>
+      <div class="card mt-3">
+        <div class="card-body">
+          <p class="card-text"><%= comment.content %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
