@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   end
   
   patch '/admin/posts/:post_id/post_comments/:id/edit', to: 'post_comments#update', as: :update_post_comment
+
+  get '/detail1.html', to: 'totonous#detail1'
+
+  get '/shoulder_pain', to: 'pages#shoulder_pain'
 end
   
-
