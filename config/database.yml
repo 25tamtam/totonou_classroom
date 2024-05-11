@@ -50,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: totonou_classroom_production
-  username: totonou_classroom
-  password: <%= ENV['TOTONOU_CLASSROOM_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  url: <%= ENV['DATABASE_URL'] %>
