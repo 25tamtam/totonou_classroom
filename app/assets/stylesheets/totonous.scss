@@ -1,8 +1,184 @@
 // Place all the styles related to the totonous controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+
+
 .operation ul li {
   display: inline-block;
-  
 }
 
+// TOPページ一覧
+
+.bg-custom {
+  background-color: #8bacaaff;
+}
+
+.navbar {
+  background-color: #f99b7dff; /* ナビゲーションバーの背景色 */
+}
+
+.custom-nav {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%; /* ul要素の幅を100%に設定 */
+}
+
+.custom-nav .nav-link {
+  text-decoration: none;
+  color: white; /* ナビゲーションリンクの文字色 */
+  padding: 10px; /* ナビゲーションリンクの余白を追加 */
+  font-size: 20px;
+}
+
+.custom-text {
+    width: 100%;
+    color: #b04759;
+    font-size: 24px;
+    padding: 30px;
+    text-align: center; 
+    font-weight: bold; 
+}
+
+// 記事一覧
+
+.articles-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.article-card {
+    flex-basis: calc(50% - 30px);
+    margin-left: 30px;
+    border: 1px solid #b7b7b7;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+
+    .article-card:hover {
+        border-color: #000; /* マウスをホバーした際の枠線の色を指定 */
+    }
+
+    .article-link {
+        text-decoration: none; /* リンクの下線を非表示 */
+        color: inherit; /* リンクの色を親要素の色に合わせる */
+    }
+
+    .article-link:hover {
+        color: blue; /* マウスをホバーした際のリンクの色を指定 */
+    }
+    
+    .custom-text ol {
+    list-style: none;
+    padding: 0;
+}
+
+// 右側サイドバーのランキング
+.custom-text li {
+    display: flex;
+    align-items: center; /* 画像とテキストを垂直方向に中央揃え */
+    margin-bottom: 10px; /* 各項目の下の余白を追加 */
+    
+}
+
+.custom-text li img {
+    margin-right: 10px; /* 画像とテキストの間にスペースを追加 */
+}
+
+.rank-link {
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+//TOPページ下、フッターの真上 
+.content-container {
+  margin-left: 20px;
+}
+
+.content-item {
+  margin-bottom: 10px;
+}
+
+// .target-element {
+//   padding-bottom: 90px;/* 任意の間隔を設定 */
+// }
+
+.my-container {
+  display: flex;
+  justify-content: space-between; /* 要素間のスペースを均等に配置 */
+}
+
+.my-item {
+  width: 100%; /* カードの幅を調整 */
+  // border: none; /* 枠線を削除 */
+}
+
+.representative {
+    color: #414141;
+    font-size: 16px;
+    text-align: center; 
+    font-weight: bold;
+}
+
+.text-description {
+    margin-top: 10px; /* 適切な余白を追加してください */
+}
+
+.thin-font {
+    font-weight: lighter;
+}
+
+ .my-item ul li {
+        margin-bottom: 20px; /* 各項目の下に余白を追加 */
+}
+
+ .my-item ul li:first-child {
+        margin-top: 20px; /* 最初の項目の上に余白を追加 */
+}
+
+// セルフケアページ
+
+.selfcare_container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center; /* テキストを中央揃え */
+}
+
+.selfcare_container h1,
+.selfcare_container h2 {
+    color: #b04759; /* h1とh2の色を変更 */
+}
+
+.selfcare_container h2 {
+    margin-top: 20px; /* h2の上に20pxの空白を空ける */
+    margin-bottom: 20px;
+}
+
+.selfcare_container p {
+    margin-bottom: 20px;
+}
+.selfcare_section {
+    border: 2px solid #b7b7b7; /* 枠線の設定 */
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.selfcare_section h2 {
+    color: white; /* テキストの色を白に設定 */
+    background-color: #8bacaaff; /* 背景色を設定 */
+    border-radius: 15px; /* 角を丸める */
+    padding: 20px;
+    margin-bottom: 20px;
+    display: inline-block; /* ブロック要素をインラインブロックに変更 */
+}
+
+.selfcare_section {
+    text-align: center; /* テキストを中央揃え */
+}

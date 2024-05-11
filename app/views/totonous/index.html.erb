@@ -1,0 +1,176 @@
+<html>
+<div class="container-fluid" style="padding-left: 0px;padding-right: 0px;">
+    <nav class="navbar navbar-expand-lg bg-custom">
+      <div class="container">
+        <!-- ナビゲーションリンク -->
+        <ul class="navbar-nav ml-auto custom-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">TOTONOUとは？</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">症状別セルフケア</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">患者様の声</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">TOTONOUの使い方</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  
+<div>
+  <%= image_tag "knees.png", alt: '画像', class: "img-fluid", width: "1519.2", height: "500" %>
+</div>
+
+<div class="custom-text">
+    カテゴリーからセルフケアを探す
+</div>
+  
+ <div class="container-fluid" style="padding-left: 0px;padding-right: 0px;">
+  <nav class="navbar navbar-expand-lg bg-custom">
+    <div class="container">
+      <ul class="navbar-nav ml-auto custom-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">頭痛</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">首痛</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="shoulder_pain.html">肩痛</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">手首痛</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">手指痛</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">背中痛</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">腰痛</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">O脚</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">膝痛</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">足首痛</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">足裏痛</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+
+  <!-- 左側の記事 -->
+  <div class="row">
+    <div class="col-md-8 mt-5">
+      <%= render 'totonous/article' %>
+    </div>
+
+    <!-- 右側のサイドバー -->
+    <div class="col-md-4 mt-5">
+      <%= render 'totonous/sidebar' %>
+    </div>
+  </div>
+</div>
+</html>
+
+<div class="my-container">
+    <div class="my-item">
+        <!-- カード1のコンテンツ -->
+    <div class="content-container" style="margin-left: 250px;">
+    <div class="content-item">
+      <%= link_to root_path, data: { turbolinks: false } do %>
+        <%= image_tag "logo.png", alt: 'ロゴ', class: "img-fluid", width: "100px" %>
+      <% end %>
+    </div>
+
+    <% if user_signed_in? %>
+      <div class="content-item">
+        <%= link_to "症状投稿一覧", user_posts_path(current_user), class: "btn btn-magenta me-3 px-md-3 py-md-2", data: { turbolinks: false } %>
+      </div>
+      <div class="content-item">
+        <%= link_to new_post_path, class: "btn btn-magenta me-5 px-md-3 py-md-2", data: { turbolinks: false } do %>
+          <i class="bi bi-chat-left-text me-1"></i>
+          症状相談投稿
+        <% end %>
+      </div>
+      <div class="d-flex align-items-center">
+  <p class="text-secondary d-md-block d-none fs-6 pe-2 username"><%= current_user.username %></p>
+
+  <div class="dropdown content-item">
+    <a class="dropdown-toggle .text-gray" data-bs-toggle="dropdown" href="#"></a>
+    <div class="dropdown-menu dropdown-menu-end shadow text-center" style="padding: 4px 0px;">
+      <%= link_to "アカウント編集", edit_user_registration_path, class: "dropdown-item text-secondary border-bottom py-2", data: { turbolinks: false } %>
+      <%= link_to "ログアウト", destroy_user_session_path, class: "dropdown-item text-secondary py-2", method: :delete %>
+    </div>
+  </div> 
+</div>
+      
+      <!-- 管理者のみのリンク -->
+      <% if current_user && current_user.admin? %>
+        <div class="content-item">
+          <%= link_to "全ユーザーの投稿一覧", admin_posts_path, class: "btn btn-magenta me-3", data: { turbolinks: false } %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="content-item">
+        <%= link_to "ログイン", new_user_session_path, class: "btn .text-gray me-3", data: { turbolinks: false } %>
+      </div>
+      <div class="content-item">
+        <%= link_to "新規会員登録",new_user_registration_path, class: "btn btn-magenta me-5 px-3 py-2", data: { turbolinks: false } %>
+      </div>
+    <% end %>
+  </div>
+    </div>
+    
+    
+  <div class="my-item d-flex align-items-center">
+    <!-- カード2のコンテンツ -->
+    
+   <div class="content-item target-element d-flex align-items-center">
+    <div>
+      　<p><strong>サイト運営者代表</strong></p>
+        <%= image_tag "chiropractor.png", alt: '整体師の画像', class: "img-fluid chiropractor-image", width: "120" %>
+        <div class="representative">
+            
+            <p>田村 卓也</p>
+            <p><span class="thin-font">Takuya Tamura</span></p>   
+        </div>
+    </div>
+    
+    <div class="text-description">
+        <p>大阪生まれ横浜育ちのはまっこ<br>整体師、ホテルマンをしながら<br>プログラミングも勉強中！！</p>
+    </div>
+</div> 
+    
+    
+
+</div>
+    
+  <div class="my-item">
+        <!-- カード3のコンテンツ -->
+  <ul>
+  <li><a href="#お問い合わせ">お問い合わせ</a></li>
+  <li><a href="#SNS">SNS</a></li>
+  <li><a href="#利用規約">利用規約</a></li>
+  <li><a href="#プライバシーポリシー">プライバシーポリシー</a></li>
+  </ul>
+  </div>
+</div>
+
+  
