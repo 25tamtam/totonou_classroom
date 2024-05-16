@@ -6,7 +6,10 @@ class User < ApplicationRecord
   
   has_many :posts
   
-  validates :username, presence: true
+  validates :username, presence: { message: 'ユーザーネームをご記入ください。' }
+  validates :email, presence: { message: 'メールアドレスをご記入ください。' }
+  validates :password, presence: { message: 'パスワードをご記入ください。' }
+  validates :password_confirmation, presence: { message: 'パスワードをご記入ください' }
 
   def admin?
     is_admin

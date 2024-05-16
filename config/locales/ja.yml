@@ -1,6 +1,6 @@
 ja:
   errors:
-    format: "%{attribute}%{message}"
+    format: "%{message}"  
 
   activerecord:
     attributes:
@@ -11,6 +11,12 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード確認"
+      post:
+        title: "症状のある箇所"
+        age: "ご年齢"
+        detail: "症状やお体の気になるところ"
+        image1: "画像1"
+        image2: "画像2"
     errors:
       models:
         memo:
@@ -27,18 +33,19 @@ ja:
             password:
               blank: "を入力してください。"
               taken: "は既に使用されています。"
-              blank: "が入力されていません。"
               too_short: "は%{count}文字以上に設定して下さい。"
               too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
             password_confirmation:
               blank: "を入力してください。"
-              taken: "は既に使用されています。"
-              blank: "が入力されていません。"
-              too_short: "は%{count}文字以上に設定して下さい。"
-              too_long: "は%{count}文字以下に設定して下さい。"
-              invalid: "は有効でありません。"
-              confirmation: "がパスワードと一致しません。"
             current_password:
               blank: "を入力してください。"
+        post:
+          attributes:
+            title:
+              blank: "症状のある箇所をご記入ください。"
+            age:
+              blank: "ご年齢をご選択ください。"
+            detail:
+              blank: "症状やお体の気になるところをご記入ください。"

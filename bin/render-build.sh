@@ -12,6 +12,6 @@ bundle exec rake assets:precompile
 bundle exec rake assets:clean
 
 echo "executing migrate"
-RAILS_ENV=production bundle exec rails db:migrate
+bundle exec rails db:migrate
 
 echo "render-build.sh: done"
