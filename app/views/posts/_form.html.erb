@@ -2,41 +2,66 @@
   <div class="text-center my-4">
     <span class="text-main fs-2 ms-2"><%= action_text %>する</span>
   </div>
-
+  
   <div class="row justify-content-center">
-  <div class="col-10 col-md-6">
-    <%= form_with model: post, local: true do |f| %>
-  <div class="mb-4">
-    <%= f.label :title, "症状のある箇所をご記入ください", class: "text-secondary fw-bold mb-2" %>
-  <span class="p_required">必須</span>
-    <%= f.text_field :title, class: "form-control shadow-sm py-md-3" %>
+    <div class="col-10 col-md-6">
+      <% if post.errors.any? %>
+        <div class="alert alert-danger">
+          <h4 class="alert-heading">ご入力に誤りがございます:</h4>
+          <ul>
+            <% post.errors.messages.values.each do |messages| %>
+              <% messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      
+      <%= form_with model: post, local: true do |f| %>
+        <div class="mb-4">
+          <%= f.label :title, "症状のある箇所をご記入ください", class: "text-secondary fw-bold mb-2" %>
+          <span class="p_required">必須</span>
+          <%= f.text_field :title, class: "form-control shadow-sm py-md-3" %>
+          <% if post.errors[:title].any? %>
+            <div class="text-danger"><%= post.errors[:title].first %></div>
+          <% end %>
+        </div>
+        
+        <div class="mb-4">
+          <%= f.label :age, "ご年齢をご選択ください", class: "text-secondary fw-bold mb-2" %>
+          <span class="p_required">必須</span>
+          <div class="dropdown">
+            <%= f.select :age, { "ご年齢をご選択" => '', "10代未満" => "10代未満", "10代" => "10代", "20代" => "20代", "30代" => "30代", "40代" => "40代", "50代" => "50代", "60代以上" => "60代以上" }, {}, class: "form-select", style: "width: 150px;" %>
+            <% if post.errors[:age].any? %>
+              <div class="text-danger"><%= post.errors[:age].first %></div>
+            <% end %>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <%= f.label :detail, "症状やお体の気になるところをご記入ください", class: "text-secondary fw-bold mb-2" %>
+          <span class="p_required">必須</span>
+          <%= f.text_area :detail, class: "form-control shadow-sm py-md-3", rows: 5 %>
+          <% if post.errors[:detail].any? %>
+            <div class="text-danger"><%= post.errors[:detail].first %></div>
+          <% end %>
+        </div>
+        
+        <div class="my-4">
+          <%= f.label :image1, "症状箇所に関する画像1枚目", class: "text-secondary fw-bold mb-3" %>
+          <%= f.file_field :image1, class: "d-block" %>
+        </div>
+        
+        <div class="my-4">
+          <%= f.label :image2, "症状箇所に関する画像2枚目", class: "text-secondary fw-bold mb-3" %>
+          <%= f.file_field :image2, class: "d-block" %>
+        </div>
+        
+        <div class="text-center">
+          <%= f.submit "投稿する", class: "btn btn-magenta shadow-sm fw-bold mt-4 px-5 py-3" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-<div class="mb-4">
-  <%= f.label :age, "ご年齢をご選択ください", class: "text-secondary fw-bold mb-2" %>
-  <span class="p_required">必須</span>
-  <div class="dropdown">
-    <%= f.select :age, { "10代未満" => "10代未満", "10代" => "10代", "20代" => "20代", "30代" => "30代", "40代" => "40代", "50代" => "50代", "60代以上" => "60代以上" }, {}, class: "form-select", style: "width: 135px;" %>
-  </div>
-</div>
-
-<div class="mb-4">
- <%= f.label :detail, "症状やお体の気になるところをご記入ください", class: "text-secondary fw-bold mb-2" %>
-<span class="p_required">必須</span>
-  <%= f.text_area :detail, class: "form-control shadow-sm py-md-3", rows: 5 %>
-</div>
-<div class="my-4">
-  <%= f.label :image1, "症状箇所に関する画像1枚目", class: "text-secondary fw-bold mb-3" %>
-  <%= f.file_field :image1, class: "d-block" %>
-</div>
-<div class="my-4">
-  <%= f.label :image2, "症状箇所に関する画像2枚目", class: "text-secondary fw-bold mb-3" %>
-  <%= f.file_field :image2, class: "d-block" %>
-</div>
-<div class="text-center">
-  <%= f.submit "投稿する", class: "btn btn-magenta shadow-sm fw-bold mt-4 px-5 py-3" %>
-</div>
-　<% end %>
-</div>
-</div>
 </div>

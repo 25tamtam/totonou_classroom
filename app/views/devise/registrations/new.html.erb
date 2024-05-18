@@ -2,29 +2,72 @@
   <div class="text-center mt-5">
     <p class="text-purple fs-3 pt-3 pb-2">新規会員登録</p>
   </div>
+      
   <div class="row justify-content-center">
-    <div class="col-10 col-md-6">
+  <div class="col-10 col-md-6">
+  <% if @user.errors.any? %>
+  <div class="alert alert-danger">
+  <h4 class="alert-heading">ご入力に誤りがございます:</h4>
+  <ul>
+  <% @user.errors.each do |attribute, message| %>
+  <% unless attribute.to_s == 'email' && message == "can't be blank" || attribute.to_s == 'password' && message == "can't be blank" %>
+  <% if message == "doesn't match Password" %>
+  <li>パスワードが一致しません。</li>
+  <% else %>
+  <li><%= message %></li>
+  <% end %>
+  <% end %>
+  <% end %>
+  </ul>
+  </div>
+    <% end %>
       <%= form_with model: @user, url: user_registration_path, local: true do |f| %>  
         <div class="mb-4">
           <%= f.label :username, "ユーザーネーム", class: "text-secondary fw-bold mb-2" %>
           <span class="p_required">必須</span>
           <%= f.text_field :username, class: "form-control shadow-sm py-md-3" %>
+          <% if @user.errors[:username].any? %>
+            <div class="text-danger"><%= @user.errors[:username].first %></div>
+          <% end %>
         </div>
         <div class="mb-4">
           <%= f.label :email, "メールアドレス", class: "text-secondary fw-bold mb-2" %>
           <span class="p_required">必須</span>
           <%= f.email_field :email, class: "form-control shadow-sm py-md-3" %>
+          <% if @user.errors[:email].any? %>
+        <% if @user.errors[:email].include?("can't be blank") %>
+        <div class="text-danger">メールアドレスをご記入ください。</div>
+        <% else %>
+        <div class="text-danger"><%= @user.errors[:email].first %></div>
+        <% end %>
+        <% end %>
         </div>
         <div class="mb-4">
           <%= f.label :password, "パスワード", class: "text-secondary fw-bold mb-2" %>
           <span class="p_required">必須</span>
           <%= f.password_field :password, class: "form-control shadow-sm py-md-3" %>
+         <% if @user.errors[:password].any? %>
+          <% if @user.errors[:password].include?("can't be blank") %>
+        <div class="text-danger">パスワードをご記入ください。</div>
+        <% else %>
+        <div class="text-danger"><%= @user.errors[:password].first %></div>
+        <% end %>
+        <% end %>
         </div>
+        
         <div class="mb-4">
-          <%= f.label :password_confirmation, "パスワード確認", class: "text-secondary fw-bold mb-2" %>
-          <span class="p_required">必須</span>
-          <%= f.password_field :password_confirmation, class: "form-control shadow-sm py-md-3" %>
+        <%= f.label :password_confirmation, "パスワード確認", class: "text-secondary fw-bold mb-2" %>
+        <span class="p_required">必須</span>
+        <%= f.password_field :password_confirmation, class: "form-control shadow-sm py-md-3" %>
+        <% if @user.errors[:password_confirmation].any? %>
+        <% if @user.errors[:password_confirmation].include?("doesn't match Password") %>
+        <div class="text-danger">パスワードが一致しません。</div>
+        <% else %>
+        <div class="text-danger"><%= @user.errors[:password_confirmation].first %></div>
+        <% end %>
+        <% end %>
         </div>
+        
         <div class="my-4">
           <%= f.label :symptoms, "症状、お体の気になるところを記入", class: "text-secondary fw-bold mb-2" %>
           <%= f.text_field :symptoms, class: "form-control shadow-sm py-md-3" %>

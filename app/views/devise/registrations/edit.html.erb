@@ -6,29 +6,88 @@
   <div class="row justify-content-center">
     <div class="col-10 col-md-6">
       <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+
+<% if @user.errors.any? %>
+  <div class="alert alert-danger">
+    <h4 class="alert-heading">ご入力に誤りがございます:</h4>
+    <ul>
+      <% if @user.errors[:username].any? %>
+        <li>ユーザーネームをご記入ください。</li>
+      <% end %>
+      <% if @user.errors[:email].any? %>
+        <li>メールアドレスをご記入ください。</li>
+      <% end %>
+      <% if @user.errors[:current_password].any? %>
+        <li>現在のパスワードをご記入ください。</li>
+      <% end %>
+      <% if @user.errors[:password].any? %>
+        <li>新しいパスワードをご記入ください。</li>
+      <% end %>
+      <% if @user.errors[:password_confirmation].any? %>
+        <li>新しいパスワードをご記入ください。</li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
         <div class="mb-4">
           <%= f.label :username, "ユーザーネーム", class: "text-secondary fw-bold mb-2" %>
           <span class="p_required">必須</span>
           <%= f.text_field :username, class: "form-control shadow-sm py-md-3" %>
+          <% if @user.errors[:username].any? %>
+            <div class="text-danger"><%= @user.errors[:username].first %></div>
+          <% end %>
         </div>
         <div class="mb-4">
           <%= f.label :email, "メールアドレス", class: "text-secondary fw-bold mb-2" %>
           <span class="p_required">必須</span>
           <%= f.email_field :email, class: "form-control shadow-sm py-md-3" %>
+          <% if @user.errors[:email].any? %>
+          <% if @user.errors[:email].include?("can't be blank") %>
+          <div class="text-danger">メールアドレスをご記入ください。</div>
+          <% else %>
+          <div class="text-danger"><%= @user.errors[:email].first %></div>
+          <% end %>
+          <% end %>
         </div>
         <div class="mb-4">
           <%= f.label :current_password, "現在のパスワード", class: "text-secondary fw-bold mb-2" %>
           <span class="p_required">必須</span>
           <%= f.password_field :current_password, class: "form-control shadow-sm py-md-3" %>
+          <% if @user.errors[:current_password].any? %>
+          <% if @user.errors[:current_password].include?("can't be blank") %>
+          <div class="text-danger">現在のパスワードをご記入ください。</div>
+          <% else %>
+          <div class="text-danger"><%= @user.errors[:current_password].first %></div>
+          <% end %>
+          <% end %>
+
         </div>
         <div class="mb-4">
-          <%= f.label :password, "パスワード", class: "text-secondary fw-bold mb-2" %>
+          <%= f.label :password, "新しいパスワード", class: "text-secondary fw-bold mb-2" %>
+          <span class="p_required">必須</span>
           <%= f.password_field :password, class: "form-control shadow-sm py-md-3" %>
+          <% if @user.errors[:password].any? %>
+          <% if @user.errors[:password].include?("can't be blank") || @user.errors[:password].include?("パスワードをご記入ください。") %>
+          <div class="text-danger">新しいパスワードをご記入ください。</div>
+          <% else %>
+          <div class="text-danger"><%= @user.errors[:password].first %></div>
+          <% end %>
+          <% end %>
         </div>
         <div class="mb-4">
-          <%= f.label :password_confirmation, "パスワード確認", class: "text-secondary fw-bold mb-2" %>
+          <%= f.label :password_confirmation, "新しいパスワード確認", class: "text-secondary fw-bold mb-2" %>
+          <span class="p_required">必須</span>
           <%= f.password_field :password_confirmation, class: "form-control shadow-sm py-md-3" %>
-        </div>
+  <% if @user.errors[:password_confirmation].any? %>
+  <% if @user.errors[:password_confirmation].include?("パスワードをご記入ください") %>
+  <div class="text-danger">新しいパスワードをご記入ください。</div>
+<% elsif @user.errors[:password_confirmation].any? %>
+  <div class="text-danger"><%= @user.errors[:password_confirmation].first %></div>
+<% end %>
+<% end %>
+
+ </div>
         <div class="my-4">
           <%= f.label :symptoms, "症状、お体の気になるところを記入", class: "text-secondary fw-bold mb-2" %>
           <%= f.text_field :symptoms, class: "form-control shadow-sm py-md-3" %>
